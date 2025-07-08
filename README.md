@@ -1,2 +1,2 @@
-# LeetCode-Questions
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub-3.0](https://github.com/raphaelheinz/LeetHub-3.0)
+LeetCode Solutions Repository
+This repository contains my solutions to LeetCode problems, written primarily in Java and C++ and organized by difficulty (Easy, Medium, Hard). Each solution is committed with its respective time and space complexity, ensuring clarity on performance. Individual README files for each problem include the full question statement and test cases. This project serves as a comprehensive resource for tracking my algorithmic problem-solving progress and preparing for technical interviews. Feel free to explore, use these solutions for learning, or contribute suggestions to enhance the repository!
