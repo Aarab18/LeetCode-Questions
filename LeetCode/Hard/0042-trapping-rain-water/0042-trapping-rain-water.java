@@ -1,21 +1,19 @@
 class Solution {
-    public int trap(int[] height) {
-        int left = 1;
-        int right = height.length - 2;
-        int leftMax = height[left - 1];
-        int rightMax = height[right + 1];
-        int result = 0;
-        while (left <= right) {
-            if (rightMax <= leftMax) {
-                result += Math.max(0, rightMax - height[right]);
-                rightMax = Math.max(rightMax, height[right]);
-                right--;
-            } else { 
-                result += Math.max(0, leftMax - height[left]);
-                leftMax = Math.max(leftMax, height[left]);
-                left++;
+    public int trap(int[] arr) {
+        Stack<Integer> s=new Stack<>();
+        int water=0;
+        for(int i=0;i<arr.length;i++) {
+            while(!s.isEmpty() && arr[i]>arr[s.peek()]) {
+                int bottom=s.pop();
+                if(s.isEmpty()) {
+                    break;
+                }
+                int h=i-s.peek()-1;
+                int w=Math.min(arr[s.peek()], arr[i])-arr[bottom];
+                water+=(h*w);
             }
+            s.push(i);
         }
-        return result;
+        return water;
     }
 }
