@@ -6,7 +6,6 @@ class Solution {
         int self=n-2;
         Set<Integer> set=new HashSet<>();
         int mySum=0;
-        System.out.println(Arrays.toString(piles));
         for(int i=0;i<n/3;i++) {
             mySum+=piles[self];
             self-=2;
