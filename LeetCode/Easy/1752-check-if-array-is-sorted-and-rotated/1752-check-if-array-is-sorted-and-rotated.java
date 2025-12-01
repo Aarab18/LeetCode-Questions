@@ -1,23 +1,19 @@
 class Solution {
     public boolean check(int[] nums) {
-        int n=nums.length;
-        int[] copy=new int[n];
-        for(int i=0;i<n;i++) {
-           copy[i]=nums[i];
-        }
-        Arrays.sort(copy);
-        int index=0;
-        for(int i=0;i<n;i++) {
-            if(nums[i]==copy[0] && (i-1)>=0 && nums[i]<nums[i-1]) {
-                index=i;
-                break;
+        int count=0;
+        for(int i=0;i<nums.length-1;i++) {
+            if(nums[i]>nums[i+1]) {
+                count++;
             }
         }
-        for(int i=0;i<n;i++) {
-            if(copy[i]!=nums[(i+index)%n]) {
-                return false;
+        if(count==0) {
+            return true;
+        }
+        else if(count==1) {
+            if(nums[0]>=nums[nums.length-1]) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }
