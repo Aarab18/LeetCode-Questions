@@ -7,13 +7,13 @@ class Solution {
         int maxLen=0;
         for(int num : set) {
             if(!set.contains(num-1)) {
-                int currNum=num;
+                int currNum=num+1;
                 int length=1;
-                while(set.contains(currNum+1)) {
+                while(set.contains(currNum)) {
                     currNum++;
                     length++;
                 }
-                maxLen=Math.max(maxLen, length);
+                maxLen=Math.max(length, maxLen);
             }
         }
         return maxLen;
