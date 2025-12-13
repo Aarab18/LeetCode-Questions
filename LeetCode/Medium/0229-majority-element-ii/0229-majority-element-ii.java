@@ -1,42 +1,42 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
         int first=0, second=0;
-        int cFirst=0, cSecond=0;
+        int countFirst=0, countSecond=0;
         for(int num : nums) {
-            if(cFirst==0 && second!=num) {
+            if(countFirst==0 && second!=num) {
                 first=num;
-                cFirst=1;
+                countFirst=1;
             }
-            else if(cSecond==0 && first!=num) {
+            else if(countSecond==0 && first!=num) {
                 second=num;
-                cSecond=1;
+                countSecond=1;
             }
             else if(first==num) {
-                cFirst++;
+                countFirst++;
             }
             else if(second==num) {
-                cSecond++;
+                countSecond++;
             }
             else {
-                cFirst--;
-                cSecond--;
+                countFirst--;
+                countSecond--;
             }
         }
-        cFirst=0;
-        cSecond=0;
+        countFirst=0;
+        countSecond=0;
         for(int num : nums) {
             if(num==first) {
-                cFirst++;
+                countFirst++;
             }
             else if(num==second) {
-                cSecond++;
+                countSecond++;
             }
         }
         List<Integer> majority=new ArrayList<>();
-        if(cFirst>nums.length/3) {
+        if(countFirst>nums.length/3) {
             majority.add(first);
         }
-        if(cSecond>nums.length/3) {
+        if(countSecond>nums.length/3) {
             majority.add(second);
         }
         return majority;
