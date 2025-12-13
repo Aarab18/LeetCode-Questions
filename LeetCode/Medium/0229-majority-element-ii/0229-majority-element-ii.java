@@ -1,43 +1,44 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        int count1=0, count2=0;
-        int val1=Integer.MIN_VALUE, val2=Integer.MIN_VALUE;
+        int first=0, second=0;
+        int cFirst=0, cSecond=0;
         for(int num : nums) {
-            if(count1==0 && val2!=num) {
-                count1=1;
-                val1=num;
+            if(cFirst==0 && second!=num) {
+                first=num;
+                cFirst=1;
             }
-            else if(count2==0 && val1!=num) {
-                count2=1;
-                val2=num;
+            else if(cSecond==0 && first!=num) {
+                second=num;
+                cSecond=1;
             }
-            else if(val1==num) {
-                count1++;
+            else if(first==num) {
+                cFirst++;
             }
-            else if(val2==num) {
-                count2++;
+            else if(second==num) {
+                cSecond++;
             }
             else {
-                count1--;
-                count2--;
+                cFirst--;
+                cSecond--;
             }
         }
-        count1=0; count2=0;
+        cFirst=0;
+        cSecond=0;
         for(int num : nums) {
-            if(num==val1) {
-                count1++;
+            if(num==first) {
+                cFirst++;
             }
-            if(num==val2) {
-                count2++;
+            else if(num==second) {
+                cSecond++;
             }
         }
-        List<Integer> list=new ArrayList<>();
-        if(count1>nums.length/3) {
-            list.add(val1);
+        List<Integer> majority=new ArrayList<>();
+        if(cFirst>nums.length/3) {
+            majority.add(first);
         }
-        if(count2>nums.length/3) {
-            list.add(val2);
+        if(cSecond>nums.length/3) {
+            majority.add(second);
         }
-        return list;
+        return majority;
     }
 }
